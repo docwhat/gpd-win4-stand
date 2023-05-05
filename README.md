@@ -15,3 +15,15 @@ I have not tested this on any other 3d printer, so I don't know if it will work 
 You'll need [OpenSCAD](https://www.openscad.org/) to generate STL files from the source code.
 
 ## Usage
+
+I work on the project using [VS Code](https://code.visualstudio.com/). I have saved the recommended settings in the `.vscode` folder.
+
+## Updating scad-utils
+
+The project uses the library [scad-utils](https://github.com/OskarLinde/scad-utils).
+
+To update the library, run the following command:
+
+```sh
+git subtree pull --prefix scad-utils https://github.com/OskarLinde/scad-utils.git master --squash
+```
