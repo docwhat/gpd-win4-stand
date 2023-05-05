@@ -1,5 +1,7 @@
 // Units are in mm.
 
+use <scad-utils/morphology.scad>;
+
 // rest_height: The height of the backrest.
 // depth: The distance from the front to the back.
 module stand(rest_height = 20, depth = 70)
@@ -21,7 +23,7 @@ module stand(rest_height = 20, depth = 70)
 
     // The thickness of the lip on the front of the stand.
     // i.e., the horizontal distance from b to c
-    lip_thickness = 2.5;
+    lip_thickness = 2;
 
     // The vertical distance from the min_height to point d. The
     // height added because the floor tilts back.
@@ -50,10 +52,7 @@ module stand(rest_height = 20, depth = 70)
 
     union()
     {
-        // 1/2mm corner rounding
-        offset(1, $fn = 24) offset(-1, $fn = 24)
-            // Shape
-            polygon([ A, B, C, D, E, F, G, H ]);
+        rounding(1) polygon([ A, B, C, D, E, F, G, H ]);
         // The little knob at the top of the lip.
         translate(concat(C, 0)) circle(lip_thickness);
     };
