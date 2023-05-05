@@ -7,6 +7,11 @@ plugins:
       ref: v0.0.16
       uri: https://github.com/trunk-io/plugins
 lint:
+  ignore:
+    - linters: [ALL]
+      paths:
+        # Ignore imported 3rd-party files.
+        - scad-utils/**
   enabled:
     - git-diff-check
     - gitleaks@8.16.3
