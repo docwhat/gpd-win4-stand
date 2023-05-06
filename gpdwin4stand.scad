@@ -17,7 +17,7 @@ module stand(rest_height = 20, depth = 70, min_height = 2, shell_r = 0)
     floor_angle = back_angle / 2;
 
     // The height of the lip on the front of the stand.
-    lip_height = 12;
+    lip_height = 20;
 
     // The thickness of the lip on the front of the stand.
     // i.e., the horizontal distance from b to c
@@ -73,8 +73,9 @@ depth = 65;
 height = 31;
 proud = 12;
 
+// The thickness of the walls.
 wall = 2.2;
-strut_r = -3 * wall;
+strut_r = 0;
 min_height = wall * 6;
 
 // Fudge factor to make sure things glue together correctly.
@@ -85,6 +86,7 @@ union()
     // Struts
     color("#f84") translate([ 0, 0, 0 ]) linear_extrude(wall)
         stand(rest_height = height, depth = depth, min_height = min_height, shell_r = strut_r);
+
     color("#84f") translate([ 0, 0, width / 3 ]) linear_extrude(wall)
         stand(rest_height = height, depth = depth, min_height = min_height, shell_r = strut_r);
     color("#f48") translate([ 0, 0, 2 * width / 3 ]) linear_extrude(wall)
