@@ -67,7 +67,7 @@ module stand(rest_height = 20, depth = 70, min_height = 2, shell_r = 0)
 
 $fn = 24;
 
-width = 80;
+width = 90;
 depth = 65;
 
 height = 31;
