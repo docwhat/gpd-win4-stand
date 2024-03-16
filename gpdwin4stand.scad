@@ -21,7 +21,7 @@ module stand(rest_height = 20, depth = 70, min_height = 2, shell_r = 0)
 
     // The thickness of the lip on the front of the stand.
     // i.e., the horizontal distance from b to c
-    lip_thickness = 3;
+    lip_thickness = 2.5;
 
     // The vertical distance from the min_height to point d. The
     // height added because the floor tilts back.
@@ -67,14 +67,15 @@ module stand(rest_height = 20, depth = 70, min_height = 2, shell_r = 0)
 
 $fn = 24;
 
-width = 90;
+width = 120;
 depth = 65;
 
 height = 31;
 proud = 12;
 
 // The thickness of the walls.
-wall = 2.2;
+wall = 2.1;//2.2;
+strut_wall = 1;
 strut_r = 0;
 min_height = wall * 6;
 
@@ -83,19 +84,24 @@ glue = 0.1;
 
 union()
 {
-    // Struts
-    color("#f84") translate([ 0, 0, 0 ]) linear_extrude(wall)
+    // Orange Strut
+    color("#f84") translate([ 0, 0, 0 ]) linear_extrude(strut_wall)
         stand(rest_height = height, depth = depth, min_height = min_height, shell_r = strut_r);
 
-    color("#84f") translate([ 0, 0, width / 3 ]) linear_extrude(wall)
+    // Purple Strut
+    color("#84f") translate([ 0, 0, width / 3 ]) linear_extrude(strut_wall)
         stand(rest_height = height, depth = depth, min_height = min_height, shell_r = strut_r);
-    color("#f48") translate([ 0, 0, 2 * width / 3 ]) linear_extrude(wall)
+    
+    // Red Strut
+    color("#f48") translate([ 0, 0, 2 * width / 3 ]) linear_extrude(strut_wall)
         stand(rest_height = height, depth = depth, min_height = min_height, shell_r = strut_r);
-    color("#8f4") translate([ 0, 0, width - wall ]) linear_extrude(wall)
+    
+    // Green Strut
+    color("#8f4") translate([ 0, 0, width - wall ]) linear_extrude(strut_wall)
         stand(rest_height = height, depth = depth, min_height = min_height, shell_r = strut_r);
 
     // Back
-    color("#48f") translate([ 0, 0, wall - glue ]) linear_extrude(width + 2 * glue - 2 * wall)
+    color("#48f") translate([ 0, 0, strut_wall - glue ]) linear_extrude(width + 2 * glue - 2 * strut_wall)
         stand(rest_height = height - proud, depth = depth, min_height = min_height,
               shell_r = -1 * wall); // about the distance from the bottom edge to the fan.
 }
